@@ -15,8 +15,17 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.dev.myschool.R
+import com.dev.myschool.activities.HomeActivity
 import com.dev.myschool.activities.LoginActivity
+import com.dev.myschool.models.User
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupFragment : Fragment() {
 
@@ -29,6 +38,8 @@ class SignupFragment : Fragment() {
     private lateinit var etConfirmPwd: EditText
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var database: FirebaseFirestore
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -41,9 +52,14 @@ class SignupFragment : Fragment() {
         initViews(view)
 
         auth = FirebaseAuth.getInstance()
+        database = FirebaseFirestore.getInstance()
 
-        val userType = arguments?.getInt("UserType")
-        Log.d(TAG, "User: $userType")
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.decfault_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(context, gso)
 
         btnPrev.setOnClickListener {
             callUserTypeFragment()
@@ -51,6 +67,10 @@ class SignupFragment : Fragment() {
 
         btnSignup.setOnClickListener {
             validateUserInput()
+        }
+
+        btnGoogleSignup.setOnClickListener {
+            signIn()
         }
 
         txtLogin.setOnClickListener {
@@ -126,20 +146,99 @@ class SignupFragment : Fragment() {
                         val user = auth.currentUser
                         if (user != null) {
                             Log.d(TAG, "User: ${user.uid}")
+                            storeUserInfo(user)
                         }
                     } else {
-                        Log.d(TAG, "registerUser:failure", it.exception);
-                        Toast.makeText(activity, "Registration Failed!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "registerUser:failure", it.exception)
+                        Toast.makeText(activity, "Registration Failed!", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener(it) {
-                    Toast.makeText(activity, "" + it.message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "" + it.message, Toast.LENGTH_SHORT).show()
                 }
         }
     }
 
+    private fun signIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            if (task.isSuccessful) {
+                try {
+                    // Google Sign In was successful, authenticate with Firebase
+                    val account = task.getResult(ApiException::class.java)!!
+                    Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
+                    firebaseAuthWithGoogle(account.idToken!!)
+                } catch (e: ApiException) {
+                    // Google Sign In failed, update UI appropriately
+                    Log.w(TAG, "Google sign in failed", e)
+                }
+            } else {
+                Log.w(TAG, task.exception.toString())
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.d(TAG, "registerUser:success")
+                    val user = auth.currentUser
+                    if (user != null) {
+                        Log.d(TAG, "User: ${user.uid}")
+                        storeUserInfo(user)
+                    }
+                } else {
+                    Log.d(TAG, "registerUser:failure", it.exception)
+                    Toast.makeText(activity, "Registration Failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(activity, "" + it.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun storeUserInfo(user: FirebaseUser) {
+        val newUser = arguments?.let {
+            user.email?.let { it1 ->
+                User(
+                    user.uid,
+                    it1, it.getInt("UserType")
+                )
+            }
+        }
+
+        if (newUser != null) {
+            database.collection("Users").document(user.uid).set(newUser)
+                .addOnSuccessListener {
+                    Toast.makeText(activity, "Account created Successfully", Toast.LENGTH_SHORT)
+                        .show()
+                    startHomeActivity()
+                }
+                .addOnFailureListener {
+                    Log.d(TAG, "Error adding document" + it.message)
+                }
+        }
+    }
+
+    private fun startHomeActivity() {
+        val intent = Intent(activity, HomeActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+    }
+
     companion object {
         private const val TAG = "SignupFragment"
+        private const val RC_SIGN_IN = 100
     }
 
 }

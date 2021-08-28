@@ -53,6 +53,18 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/signIn_warning_tv"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/poppins"
+            android:text="@string/bad_login_credential"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="@dimen/text_18" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signIn_email_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
