@@ -11,4 +11,9 @@
     <string name="or">or\u0020</string>
     <string name="login_to_your_account">Login to your account</string>
     <string name="view_roles_and_access_of_user">View Roles and Access of User</string>
+    <string name="teacher_roles">This user has the right to create classes,upload the assignments, tests and can
+        also share the link to join video lectures. He can also review the assignment and
+        tests and give the marks on the platform itself. This user will be kind of an administrator.</string>
+    <string name="student_roles">This user will have the right to perform the assignments, attend the tests and
+        join the lectures. He will also be able to see the timetable and test results as mentioned above.</string>
 </resources>
