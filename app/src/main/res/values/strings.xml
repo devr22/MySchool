@@ -9,6 +9,7 @@
     <string name="student">Student</string>
     <string name="next">Next</string>
     <string name="or">or\u0020</string>
+    <string name="or1">or</string>
     <string name="login_to_your_account">Login to your account</string>
     <string name="view_roles_and_access_of_user">View Roles and Access of User</string>
     <string name="teacher_roles">This user has the right to create classes,upload the assignments, tests and can
@@ -16,4 +17,13 @@
         tests and give the marks on the platform itself. This user will be kind of an administrator.</string>
     <string name="student_roles">This user will have the right to perform the assignments, attend the tests and
         join the lectures. He will also be able to see the timetable and test results as mentioned above.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="back">Back</string>
+    <string name="prev">Prev</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="no_account">No account?\u0020</string>
+    <string name="create_one">Create One!</string>
 </resources>

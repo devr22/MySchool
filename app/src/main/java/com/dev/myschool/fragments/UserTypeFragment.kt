@@ -1,6 +1,7 @@
 package com.dev.myschool.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.dev.myschool.LoginActivity
 import com.dev.myschool.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -15,6 +17,7 @@ class UserTypeFragment : Fragment() {
 
     private lateinit var btnNext: Button
     private lateinit var txtRoles: TextView
+    private lateinit var txtLogin: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +36,18 @@ class UserTypeFragment : Fragment() {
             showBottomSheetDialog(container!!.context)
         }
 
+        txtLogin.setOnClickListener {
+            val intent = Intent(container?.context, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 
     private fun initViews(view: View) {
         btnNext = view.findViewById(R.id.userType_next_btn)
         txtRoles = view.findViewById(R.id.userType_role_txt)
+        txtLogin = view.findViewById(R.id.userType_login_txt)
     }
 
     private fun callSignupFragment() {
