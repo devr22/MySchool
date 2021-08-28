@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/padding_large"
         android:paddingVertical="@dimen/padding_normal"
-        tools:context=".LoginActivity">
+        tools:context=".activities.LoginActivity">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="80dp"
@@ -90,6 +90,15 @@
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/signIn_forgotPwd_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/margin_5"
+            android:text="@string/forgot_password"
+            android:textColor="@color/blue" />
 
         <Button
             android:id="@+id/signIn_login_btn"
