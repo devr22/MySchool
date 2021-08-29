@@ -20,4 +20,8 @@
     <dimen name="text_26">26sp</dimen>
 
     <dimen name="background_corner_radius">20dp</dimen>
+    <dimen name="top_bar_radius">30dp</dimen>
+
+    <dimen name="top_bar_height">90dp</dimen>
+    <dimen name="profile_image_size">65dp</dimen>
 </resources>
