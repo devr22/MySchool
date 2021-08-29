@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -55,7 +56,6 @@
 
         <TextView
             android:id="@+id/signIn_warning_tv"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -63,7 +63,8 @@
             android:fontFamily="@font/poppins"
             android:text="@string/bad_login_credential"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="@dimen/text_18" />
+            android:textSize="@dimen/text_18"
+            android:visibility="invisible" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signIn_email_til"
@@ -142,6 +143,14 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_16"
             tools:ignore="RtlHardcoded" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/login_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_5"
+            android:visibility="gone" />
 
     </LinearLayout>
 

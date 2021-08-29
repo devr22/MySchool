@@ -10,8 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val registrationIntent = Intent(this, RegistrationActivity::class.java)
-        startActivity(registrationIntent)
+        val loginIntent = Intent(this, LoginActivity::class.java)
+        startActivity(loginIntent)
         finish()
     }
 }

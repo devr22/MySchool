@@ -1,5 +1,6 @@
 package com.dev.myschool.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -22,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -32,10 +34,12 @@ class SignupFragment : Fragment() {
     private lateinit var btnPrev: Button
     private lateinit var btnSignup: Button
     private lateinit var btnGoogleSignup: Button
-    private lateinit var txtLogin: TextView
+    private lateinit var tvLogin: TextView
+    private lateinit var tvMsg: TextView
     private lateinit var etEmail: EditText
     private lateinit var etPwd: EditText
     private lateinit var etConfirmPwd: EditText
+    private lateinit var progress: CircularProgressIndicator
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -73,7 +77,7 @@ class SignupFragment : Fragment() {
             signIn()
         }
 
-        txtLogin.setOnClickListener {
+        tvLogin.setOnClickListener {
             val intent = Intent(container?.context, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -85,10 +89,12 @@ class SignupFragment : Fragment() {
         btnPrev = view.findViewById(R.id.signup_prev_btn)
         btnSignup = view.findViewById(R.id.signup_signup_btn)
         btnGoogleSignup = view.findViewById(R.id.signup_googleLogin_btn)
-        txtLogin = view.findViewById(R.id.signup_login_txt)
+        tvLogin = view.findViewById(R.id.signup_login_txt)
+        tvMsg = view.findViewById(R.id.signup_msg_tv)
         etEmail = view.findViewById(R.id.signup_email_et)
         etPwd = view.findViewById(R.id.signup_pwd_et)
         etConfirmPwd = view.findViewById(R.id.signup_confirmPwd_et)
+        progress = view.findViewById(R.id.signup_progress)
     }
 
     private fun callUserTypeFragment() {
@@ -100,6 +106,7 @@ class SignupFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun validateUserInput() {
+        progress.visibility = View.VISIBLE
         val email = etEmail.text.toString().trim()
         val pwd = etPwd.text.toString().trim()
         val confirmPwd = etConfirmPwd.text.toString().trim()
@@ -143,17 +150,20 @@ class SignupFragment : Fragment() {
                 .addOnCompleteListener(it) {
                     if (it.isSuccessful) {
                         Log.d(TAG, "registerUser:success")
+                        tvMsg.visibility = View.VISIBLE
                         val user = auth.currentUser
                         if (user != null) {
                             Log.d(TAG, "User: ${user.uid}")
                             storeUserInfo(user)
                         }
                     } else {
+                        progress.visibility = View.GONE
                         Log.d(TAG, "registerUser:failure", it.exception)
                         Toast.makeText(activity, "Registration Failed!", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener(it) {
+                    progress.visibility = View.GONE
                     Toast.makeText(activity, "" + it.message, Toast.LENGTH_SHORT).show()
                 }
         }
@@ -207,6 +217,7 @@ class SignupFragment : Fragment() {
             }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun storeUserInfo(user: FirebaseUser) {
         val newUser = arguments?.let {
             user.email?.let { it1 ->
@@ -220,11 +231,13 @@ class SignupFragment : Fragment() {
         if (newUser != null) {
             database.collection("Users").document(user.uid).set(newUser)
                 .addOnSuccessListener {
-                    Toast.makeText(activity, "Account created Successfully", Toast.LENGTH_SHORT)
-                        .show()
+                    progress.visibility = View.GONE
+                    tvMsg.text = "Account Created"
                     startHomeActivity()
                 }
                 .addOnFailureListener {
+                    progress.visibility = View.GONE
+                    tvMsg.text = "Error while storing user info"
                     Log.d(TAG, "Error adding document" + it.message)
                 }
         }

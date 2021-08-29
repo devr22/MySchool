@@ -162,6 +162,26 @@
             android:textSize="@dimen/text_16"
             tools:ignore="RtlHardcoded" />
 
+        <TextView
+            android:id="@+id/signup_msg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/poppins"
+            android:text="@string/storing_user_info"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="@dimen/text_16"
+            android:visibility="invisible" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/signup_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_5"
+            android:visibility="gone" />
+
     </LinearLayout>
 
 </ScrollView>

@@ -1,5 +1,6 @@
 package com.dev.myschool.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,9 @@ class HomeActivity : AppCompatActivity() {
         val logout = findViewById<Button>(R.id.logout)
         logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
+            val loginIntent = Intent(this, LoginActivity::class.java)
+            startActivity(loginIntent)
+            finish()
         }
     }
 }
