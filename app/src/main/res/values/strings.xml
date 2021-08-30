@@ -35,24 +35,19 @@
     <string name="my_school">My School</string>
     <string name="you_have_not_enrolled_in_any_subjects">You have not enrolled in any subjects!</string>
     <string name="signing_in">Signing in…</string>
-
-
-    <string name="text">This user has the right to create classes,upload the assignments, tests and can
-        also share the link to join video lectures. He can also review the assignment and
-        tests and give the marks on the platform itself. This user will be kind of an administrator.
-    This user has the right to create classes,upload the assignments, tests and can
-        also share the link to join video lectures. He can also review the assignment and
-        tests and give the marks on the platform itself. This user will be kind of an administrator.
-    This user has the right to create classes,upload the assignments, tests and can
-        also share the link to join video lectures. He can also review the assignment and
-        tests and give the marks on the platform itself. This user will be kind of an administrator.
-    This user has the right to create classes,upload the assignments, tests and can
-        also share the link to join video lectures. He can also review the assignment and
-        tests and give the marks on the platform itself. This user will be kind of an administrator.
-    This user has the right to create classes,upload the assignments, tests and can
-        also share the link to join video lectures. He can also review the assignment and
-        tests and give the marks on the platform itself. This user will be kind of an administrator.
-    This user has the right to create classes,upload the assignments, tests and can
-        also share the link to join video lectures. He can also review the assignment and
-        tests and give the marks on the platform itself. This user will be kind of an administrator.</string>
+    <string name="available_subjects">Available Subjects</string>
+    <string name="assignment">Assignment</string>
+    <string name="quiz_test">Quiz / Test</string>
+    <string name="calendar">Calendar</string>
+    <string name="logout">Logout</string>
+    <string name="enrolled_subjects">Enrolled Subjects</string>
+    <string name="r">R</string>
+    <string name="devr52222_gmail_com">devr52222@gmail.com</string>
+    <string name="to_do">To Do</string>
+    <string name="missing">Missing</string>
+    <string name="done">Done</string>
+    <string name="maths_assignment_1">Maths Assignment 1</string>
+    <string name="subject">Subject :</string>
+    <string name="task_link">Task Link :</string>
+    <string name="no_assignment_found">No Assignment found !</string>
 </resources>

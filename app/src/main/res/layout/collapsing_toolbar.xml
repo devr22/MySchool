@@ -34,7 +34,7 @@
                 android:background="@drawable/circular_tv_bg"
                 android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
-                android:text="R"
+                android:text="@string/r"
                 android:textColor="@color/teal_700"
                 android:textSize="@dimen/display_name_text_size" />
 
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
                 android:fontFamily="@font/poppins"
-                android:text="devr52222@gmail.com"
+                android:text="@string/devr52222_gmail_com"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_20" />
 

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.AssignmentActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_bar_height_normal"
+        android:background="@drawable/top_bar_bg"
+        android:padding="@dimen/padding_normal">
+
+        <ImageView
+            android:id="@+id/assignment_close_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_10"
+            android:src="@drawable/ic_close"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_toEndOf="@+id/assignment_close_iv"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/assignment"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_26" />
+
+    </RelativeLayout>
+
+    <!--    <HorizontalScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <com.google.android.material.chip.ChipGroup-->
+    <!--            android:id="@+id/assignment_chipGroup"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingHorizontal="@dimen/padding_normal"-->
+    <!--            app:singleLine="true">-->
+
+    <!--            <com.google.android.material.chip.Chip-->
+    <!--                android:id="@+id/assignment_todo_chip"-->
+    <!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="@string/to_do" />-->
+
+    <!--            <com.google.android.material.chip.Chip-->
+    <!--                android:id="@+id/assignment_done_chip"-->
+    <!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="@string/done"-->
+    <!--                android:textColor="@color/teal_700" />-->
+
+    <!--            <com.google.android.material.chip.Chip-->
+    <!--                android:id="@+id/assignment_missing_chip"-->
+    <!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="@string/missing"-->
+    <!--                android:textColor="@android:color/holo_red_light" />-->
+
+
+    <!--        </com.google.android.material.chip.ChipGroup>-->
+
+    <!--    </HorizontalScrollView>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_normal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/assignment_todo_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/to_do"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:id="@+id/assignment_todo_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/assignment_done_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/done"
+                android:textColor="@color/teal_700"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:id="@+id/assignment_done_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/assignment_missing_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/missing"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:id="@+id/assignment_missing_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/assignment_msg_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="@string/no_assignment_found"
+        android:textSize="@dimen/text_20"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assignment_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small" />
+
+</LinearLayout>

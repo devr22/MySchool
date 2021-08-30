@@ -2,8 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/subjectCard"
     android:layout_width="match_parent"
     android:layout_height="150dp"
+    android:layout_margin="@dimen/margin_5"
     app:cardBackgroundColor="@color/browser_actions_bg_grey"
     app:cardCornerRadius="6dp"
     app:cardElevation="3dp"
@@ -11,6 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/subjectCard_layout"
         android:layout_height="match_parent"
         android:padding="@dimen/padding_normal">
 

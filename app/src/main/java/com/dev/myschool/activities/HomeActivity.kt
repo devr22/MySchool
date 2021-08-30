@@ -1,9 +1,9 @@
 package com.dev.myschool.activities
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +17,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import de.hdodenhof.circleimageview.CircleImageView
 
+
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var ivProfile: CircleImageView
     private lateinit var rv: RecyclerView
     private lateinit var tvMsg: TextView
@@ -27,6 +29,14 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var database: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
+
+    private val bgImageList: ArrayList<Int> =
+        arrayListOf(
+            R.drawable.calculator,
+            R.drawable.wallpaper_net,
+            R.drawable.speaker,
+            R.drawable.study_lamp
+        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
                         subjectList.add(subject)
                     }
 
-                    adapterSubject = SubjectAdapter(subjectList)
+                    adapterSubject = SubjectAdapter(subjectList, bgImageList)
                     rv.adapter = adapterSubject
                 }
             }
@@ -82,8 +92,13 @@ class HomeActivity : AppCompatActivity() {
             }
     }
 
+    init {
+        homeActivity = this
+    }
+
     companion object {
-        private const val TAG = "HomeActivity"
+        @SuppressLint("StaticFieldLeak")
+        lateinit var homeActivity: Activity
     }
 
 }

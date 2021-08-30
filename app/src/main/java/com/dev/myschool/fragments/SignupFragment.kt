@@ -225,7 +225,8 @@ class SignupFragment : Fragment() {
             user.email?.let { it1 ->
                 User(
                     user.uid,
-                    it1, it.getInt("UserType")
+                    it1, it.getInt("UserType"),
+                    null
                 )
             }
         }
