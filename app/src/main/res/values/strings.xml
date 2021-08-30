@@ -30,7 +30,9 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="bad_login_credential">Invalid Login Credential..</string>
     <string name="decfault_web_client_id">136657161584-q3hob2kt8j3sbhn3gnp8vqt5be33o6gi.apps.googleusercontent.com</string>
-    <string name="storing_user_info">Storing user info..</string>
+    <string name="storing_user_info">Storing user info…</string>
     <string name="_8_maths">8_Maths</string>
     <string name="my_school">My School</string>
+    <string name="you_have_not_enrolled_in_any_subjects">You have not enrolled in any subjects!</string>
+    <string name="signing_in">Signing in…</string>
 </resources>

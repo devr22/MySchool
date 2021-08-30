@@ -104,9 +104,12 @@ class SignupFragment : Fragment() {
             .commit()
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun validateUserInput() {
         progress.visibility = View.VISIBLE
+        tvMsg.text = "Validating User Input..."
+        tvMsg.visibility = View.VISIBLE
         val email = etEmail.text.toString().trim()
         val pwd = etPwd.text.toString().trim()
         val confirmPwd = etConfirmPwd.text.toString().trim()
@@ -144,13 +147,14 @@ class SignupFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun createAccount(email: String, pwd: String) {
+        tvMsg.text = "Creating a new account..."
         activity?.let { it ->
             auth.createUserWithEmailAndPassword(email, pwd)
                 .addOnCompleteListener(it) {
                     if (it.isSuccessful) {
                         Log.d(TAG, "registerUser:success")
-                        tvMsg.visibility = View.VISIBLE
                         val user = auth.currentUser
                         if (user != null) {
                             Log.d(TAG, "User: ${user.uid}")
@@ -177,17 +181,14 @@ class SignupFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (task.isSuccessful) {
                 try {
-                    // Google Sign In was successful, authenticate with Firebase
                     val account = task.getResult(ApiException::class.java)!!
                     Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
                 } catch (e: ApiException) {
-                    // Google Sign In failed, update UI appropriately
                     Log.w(TAG, "Google sign in failed", e)
                 }
             } else {
@@ -219,6 +220,7 @@ class SignupFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun storeUserInfo(user: FirebaseUser) {
+        tvMsg.text = "Storing user info…"
         val newUser = arguments?.let {
             user.email?.let { it1 ->
                 User(
@@ -227,6 +229,8 @@ class SignupFragment : Fragment() {
                 )
             }
         }
+
+        Log.d(TAG, "Display Name: ${user.displayName} -> PhotoUrl: ${user.photoUrl}")
 
         if (newUser != null) {
             database.collection("Users").document(user.uid).set(newUser)

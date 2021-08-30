@@ -144,6 +144,18 @@
             android:textSize="@dimen/text_16"
             tools:ignore="RtlHardcoded" />
 
+        <TextView
+            android:id="@+id/signin_msg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/poppins"
+            android:text="@string/signing_in"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="@dimen/text_16"
+            android:visibility="invisible" />
+
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/login_progress"
             android:layout_width="wrap_content"

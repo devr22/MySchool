@@ -1,5 +1,6 @@
 package com.dev.myschool.activities
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -29,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPwd: EditText
     private lateinit var tvWarning: TextView
+    private lateinit var tvMsg: TextView
     private lateinit var progress: CircularProgressIndicator
     private lateinit var layout: ScrollView
 
@@ -54,7 +56,13 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         btnLogin.setOnClickListener {
-            login()
+            if (etEmail.text.toString().trim().isNotEmpty() &&
+                etPwd.text.toString().trim().isNotEmpty()
+            )
+                login()
+            else
+                Toast.makeText(this, "Email and Password can't be empty!", Toast.LENGTH_SHORT)
+                    .show()
         }
 
         tvForgotPwd.setOnClickListener {
@@ -80,37 +88,33 @@ class LoginActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.signIn_email_et)
         etPwd = findViewById(R.id.signIn_pwd_et)
         tvWarning = findViewById(R.id.signIn_warning_tv)
+        tvMsg = findViewById(R.id.signin_msg_tv)
         progress = findViewById(R.id.login_progress)
         layout = findViewById(R.id.login_rootLayout)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun login() {
         progress.visibility = View.VISIBLE
+        tvMsg.visibility = View.VISIBLE
 
         val email = etEmail.text.toString().trim()
         val pwd = etPwd.text.toString().trim()
 
         auth.signInWithEmailAndPassword(email, pwd)
-            .addOnCompleteListener(this) {
-                progress.visibility = View.GONE
-                if (it.isSuccessful) {
-                    tvWarning.visibility = View.INVISIBLE
-                    Log.d(TAG, "signInWithEmail:success")
-                    startHomeActivity()
-
-                } else {
-                    tvWarning.visibility = View.VISIBLE
-                }
+            .addOnSuccessListener {
+                progress.visibility = View.VISIBLE
+                tvWarning.visibility = View.INVISIBLE
+                tvMsg.text = "Successful"
+                Log.d(TAG, "signInWithEmail:success")
+                startHomeActivity()
             }
             .addOnFailureListener(this) {
                 tvWarning.visibility = View.VISIBLE
                 progress.visibility = View.GONE
+                tvMsg.visibility = View.GONE
                 Toast.makeText(this, "" + it.message, Toast.LENGTH_SHORT).show()
             }
-    }
-
-    private fun recoverPassword() {
-
     }
 
     private fun startHomeActivity() {

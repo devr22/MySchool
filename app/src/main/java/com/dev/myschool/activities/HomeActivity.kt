@@ -1,23 +1,29 @@
 package com.dev.myschool.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dev.myschool.R
 import com.dev.myschool.adapters.SubjectAdapter
 import com.dev.myschool.models.Subject
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var ivProfile: CircleImageView
     private lateinit var rv: RecyclerView
+    private lateinit var tvMsg: TextView
+
     private lateinit var adapterSubject: SubjectAdapter
 
     private lateinit var database: FirebaseFirestore
@@ -33,6 +39,11 @@ class HomeActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseFirestore.getInstance()
         user = auth.currentUser!!
+
+//        Glide.with(this)
+//            .load(user.photoUrl)
+//            .placeholder(R.drawable.ic_person)
+//            .into(ivProfile)
 
         getSubjectList()
 
@@ -50,24 +61,31 @@ class HomeActivity : AppCompatActivity() {
     private fun initViews() {
         ivProfile = findViewById(R.id.home_profileImage)
         rv = findViewById(R.id.home_rv)
+        tvMsg = findViewById(R.id.home_msg_tv)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getSubjectList() {
         database.collection("Users").document(user.uid)
             .collection("Subjects").get()
             .addOnSuccessListener {
-                val subjectList: ArrayList<Subject> = arrayListOf()
-                for (doc in it) {
-                    val subject = doc.toObject(Subject::class.java)
-                    subjectList.add(subject)
-                }
+                if (it.isEmpty) {
+                    tvMsg.visibility = View.VISIBLE
+                } else {
+                    tvMsg.visibility = View.GONE
+                    val subjectList: ArrayList<Subject> = arrayListOf()
+                    for (doc in it) {
+                        val subject = doc.toObject(Subject::class.java)
+                        subjectList.add(subject)
+                    }
 
-                adapterSubject = SubjectAdapter(subjectList)
-                rv.adapter = adapterSubject
+                    adapterSubject = SubjectAdapter(subjectList)
+                    rv.adapter = adapterSubject
+                }
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Error in getting data: " + it.message, Toast.LENGTH_SHORT)
-                    .show()
+                tvMsg.text = "Error while fetching data from server!"
+                tvMsg.visibility = View.VISIBLE
             }
     }
 
