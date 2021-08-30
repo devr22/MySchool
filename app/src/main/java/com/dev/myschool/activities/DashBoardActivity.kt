@@ -79,6 +79,11 @@ class DashBoardActivity : AppCompatActivity() {
             finish()
         }
 
+        tvTest.setOnClickListener {
+            val intent = Intent(this, TestActivity::class.java)
+            startActivity(intent)
+        }
+
         tvLogout.setOnClickListener {
             HomeActivity.homeActivity.finish()
             FirebaseAuth.getInstance().signOut()

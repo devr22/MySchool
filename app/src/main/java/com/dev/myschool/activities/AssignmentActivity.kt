@@ -140,8 +140,5 @@ class AssignmentActivity : AppCompatActivity() {
         rv.adapter = adapterAssignment
     }
 
-    companion object {
-        private const val TAG = "AssignmentActivity"
-    }
 
 }

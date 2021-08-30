@@ -50,4 +50,9 @@
     <string name="subject">Subject :</string>
     <string name="task_link">Task Link :</string>
     <string name="no_assignment_found">No Assignment found !</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
+    <string name="no_test_found">No Test Found !</string>
+    <string name="due_31_08_2021_11_59">Due: 31/08/2021 11:59</string>
+    <string name="_78_100">78/100</string>
 </resources>

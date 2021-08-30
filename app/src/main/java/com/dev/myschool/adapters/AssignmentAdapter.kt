@@ -37,12 +37,12 @@ class AssignmentAdapter(
         return MyViewHolder(view)
     }
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvName.text = assignmentList[position].name.trim()
         holder.tvSubject.text = assignmentList[position].subject.trim()
         holder.tvTask.text = assignmentList[position].taskLink.trim()
-        holder.tvDueDate.text = assignmentList[position].dueDate.toDate().toString().trim()
+        holder.tvDueDate.text = "Due: ${assignmentList[position].dueDate.toDate().toString().trim()}"
 
         holder.tvTask.setOnClickListener {
             val uri = Uri.parse(assignmentList[position].taskLink.trim())

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/assignment_card"
+    android:id="@+id/test_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_5"
@@ -19,24 +19,43 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/assignment_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/maths_assignment_1"
-            android:textSize="@dimen/text_18" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/test_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="-193dp"
+                android:layout_toStartOf="@+id/test_marks_tv"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/maths_assignment_1"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:id="@+id/test_marks_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins"
+                android:text="@string/_78_100"
+                android:textSize="@dimen/text_18" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/assignment_dueDate_tv"
+            android:id="@+id/test_dueDate_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="@string/due_31_08_2021_11_59" />
 
-
         <LinearLayout
-            android:id="@+id/assignment_expandableLayout"
+            android:id="@+id/test_expandableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -50,7 +69,7 @@
                 android:textSize="@dimen/text_16" />
 
             <TextView
-                android:id="@+id/assignment_subject_tv"
+                android:id="@+id/test_subject_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
@@ -64,7 +83,7 @@
                 android:textSize="@dimen/text_16" />
 
             <TextView
-                android:id="@+id/assignment_task_tv"
+                android:id="@+id/test_testLink_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
