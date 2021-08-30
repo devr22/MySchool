@@ -15,7 +15,7 @@
 
         <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-<!--        <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator</item>-->
+        <!--        <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator</item>-->
     </style>
 
     <!-- Radio button theme -->

@@ -230,8 +230,6 @@ class SignupFragment : Fragment() {
             }
         }
 
-        Log.d(TAG, "Display Name: ${user.displayName} -> PhotoUrl: ${user.photoUrl}")
-
         if (newUser != null) {
             database.collection("Users").document(user.uid).set(newUser)
                 .addOnSuccessListener {

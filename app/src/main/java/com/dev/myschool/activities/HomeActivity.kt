@@ -3,20 +3,18 @@ package com.dev.myschool.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dev.myschool.R
 import com.dev.myschool.adapters.SubjectAdapter
 import com.dev.myschool.models.Subject
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 class HomeActivity : AppCompatActivity() {
@@ -39,11 +37,6 @@ class HomeActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseFirestore.getInstance()
         user = auth.currentUser!!
-
-//        Glide.with(this)
-//            .load(user.photoUrl)
-//            .placeholder(R.drawable.ic_person)
-//            .into(ivProfile)
 
         getSubjectList()
 
