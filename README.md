@@ -27,17 +27,17 @@ MySchool targets to fulfil the need of online platform for education in the curr
  - Calendar for creating event / class
 
 ## Get Started
-***At First clone project directly in android studio or download zip file and then extract it at desired location and open the project in android studio or IntelliJIdea***
+***At First clone project directly in android studio or download zip file and then extract it at desired location and open the project in android studio or IntelliJ Idea***
 
 ### Steps to clone project directly in android studio
 * Run Android Studio and Click on **Get from Version Control**
-* Select Git and Paste Url of the repo and then clone the project
+* Select Git and Paste URL of the repo and then clone the project
 * The android studio will automatically download and configure all the required dependencies.\
 ***Make sure you have active internet connection, otherwise you may get several errors.***
 
 ### Build & Run
-- Select target device, emualator or real device
-- Press **Shift + F10** to run rhe app
+- Select target device, emulator or real device
+- Press **Shift + F10** to run the app
 
 ## Tech Stack & Platform
 -	Android Studio
