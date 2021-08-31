@@ -65,4 +65,10 @@
     <string name="class_link">Class Link (if any)</string>
     <string name="timing_if_any">Timing (if any)</string>
     <string name="create">Create</string>
+    <string name="no_announcement_from_your_teacher">No announcement from your teacher !!</string>
+    <string name="warning">Warning</string>
+    <string name="you_will_no_longer_have_access_to_this_subject">You will no longer have access to this subject</string>
+    <string name="un_enroll">Un Enroll</string>
+    <string name="cancel">Cancel</string>
 </resources>
+

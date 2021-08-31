@@ -30,4 +30,6 @@
     <dimen name="app_bar_height">250dp</dimen>
     <dimen name="display_name_size">100dp</dimen>
     <dimen name="display_name_text_size">70sp</dimen>
+
+    <dimen name="pop_up_cross_size">60dp</dimen>
 </resources>

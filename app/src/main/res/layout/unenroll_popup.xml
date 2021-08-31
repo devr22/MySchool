@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ECE6E6"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small">
+
+    <ImageView
+        android:layout_width="@dimen/pop_up_cross_size"
+        android:layout_height="@dimen/pop_up_cross_size"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/cross"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/warning"
+        android:textSize="@dimen/text_22" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/you_will_no_longer_have_access_to_this_subject"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="@dimen/text_16" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_normal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/popup_cancel_btn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_5"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+        <Button
+            android:id="@+id/popup_unEnroll_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_5"
+            android:layout_weight="1"
+            android:text="@string/un_enroll"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_16"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+</LinearLayout>

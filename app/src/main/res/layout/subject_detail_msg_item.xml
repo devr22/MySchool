@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_normal">
+
+    <TextView
+        android:id="@+id/subDetail_item_timestamp_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_small"
+        android:text="@string/due_31_08_2021_11_59"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subDetail_item_msg_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/student_roles" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@color/gray" />
+
+</LinearLayout>

@@ -11,12 +11,13 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.myschool.R
+import com.dev.myschool.activities.SubjectDetailActivity
 import com.dev.myschool.models.Subject
 
 class SubjectAdapter(
     private val subjectList: ArrayList<Subject>,
     private val imageList: ArrayList<Int>,
-    private val context: Context
+    val context: Context
 ) :
     RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder>() {
 
@@ -47,6 +48,12 @@ class SubjectAdapter(
             val uri = Uri.parse(subjectList[position].classLink.trim())
             context.startActivity(Intent(Intent.ACTION_VIEW, uri))
         }
+
+        holder.subjectCardLayout.setOnClickListener {
+            val intent = Intent(it.context, SubjectDetailActivity::class.java)
+            it.context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {

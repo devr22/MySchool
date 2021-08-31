@@ -41,21 +41,12 @@
             android:textSize="@dimen/text_18" />
 
         <ImageView
-            android:id="@+id/subject_remove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_remove"
-            tools:ignore="ContentDescription" />
-
-        <ImageView
             android:id="@+id/subject_videoCam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/margin_10"
-            android:layout_toStartOf="@+id/subject_remove"
             android:src="@drawable/ic_videocam"
             tools:ignore="ContentDescription" />
 
