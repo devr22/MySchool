@@ -108,7 +108,11 @@ class LoginActivity : AppCompatActivity() {
                 tvWarning.visibility = View.INVISIBLE
                 tvMsg.text = "Successful"
                 Log.d(TAG, "signInWithEmail:success")
-                startHomeActivity()
+
+                val user = it.user
+                if (user != null) {
+                    callUserSpecificActivity(user)
+                }
             }
             .addOnFailureListener(this) {
                 tvWarning.visibility = View.VISIBLE
@@ -120,6 +124,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun startHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun startTeacherActivity() {
+        val intent = Intent(this, TeacherActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -178,7 +188,10 @@ class LoginActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT)
                         .show()
-                    startHomeActivity()
+                    if (newUser.userType == 1)
+                        startTeacherActivity()
+                    else if (newUser.userType == 2)
+                        startHomeActivity()
                 }
                 .addOnFailureListener {
                     Log.d(TAG, "Error adding document" + it.message)
@@ -249,11 +262,32 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun callUserSpecificActivity(user: FirebaseUser) {
+        tvMsg.text = "Processing Your data..."
+        database.collection("Users").document(user.uid).get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val doc = it.result
+                    if (doc.exists()) {
+                        val currentUser = doc.toObject(User::class.java)
+                        if (currentUser != null) {
+                            if (currentUser.userType == 1)
+                                startTeacherActivity()
+                            else if (currentUser.userType == 2)
+                                startHomeActivity()
+                        }
+                    }
+                }
+            }
+    }
+
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-        if (currentUser != null)
-            startHomeActivity()
+        if (currentUser != null) {
+            callUserSpecificActivity(currentUser)
+        }
     }
 
 

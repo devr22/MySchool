@@ -59,4 +59,10 @@
     <string name="_78_100">78/100</string>
     <string name="enroll">Enroll</string>
     <string name="no_available_subjects_found">No available subjects found !</string>
+    <string name="create_subject">Create Subject</string>
+    <string name="subject_class">Subject/Class</string>
+    <string name="your_name">Your Name</string>
+    <string name="class_link">Class Link (if any)</string>
+    <string name="timing_if_any">Timing (if any)</string>
+    <string name="create">Create</string>
 </resources>

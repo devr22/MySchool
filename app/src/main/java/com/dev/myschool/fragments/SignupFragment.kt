@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import com.dev.myschool.R
 import com.dev.myschool.activities.HomeActivity
 import com.dev.myschool.activities.LoginActivity
+import com.dev.myschool.activities.TeacherActivity
 import com.dev.myschool.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -233,7 +234,10 @@ class SignupFragment : Fragment() {
                 .addOnSuccessListener {
                     progress.visibility = View.GONE
                     tvMsg.text = "Account Created"
-                    startHomeActivity()
+                    if (newUser.userType == 1)
+                        startTeacherActivity()
+                    else if (newUser.userType == 2)
+                        startHomeActivity()
                 }
                 .addOnFailureListener {
                     progress.visibility = View.GONE
@@ -245,6 +249,12 @@ class SignupFragment : Fragment() {
 
     private fun startHomeActivity() {
         val intent = Intent(activity, HomeActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+    }
+
+    private fun startTeacherActivity() {
+        val intent = Intent(activity, TeacherActivity::class.java)
         startActivity(intent)
         activity?.finish()
     }
