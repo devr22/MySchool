@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev.myschool.R
 import com.dev.myschool.adapters.SubjectAdapter
 import com.dev.myschool.models.Subject
+import com.dev.myschool.utils.CardBgImage
+import com.dev.myschool.utils.EnrolledSubject
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,14 +31,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var database: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
-
-    private val bgImageList: ArrayList<Int> =
-        arrayListOf(
-            R.drawable.calculator,
-            R.drawable.wallpaper_net,
-            R.drawable.speaker,
-            R.drawable.study_lamp
-        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,9 +74,10 @@ class HomeActivity : AppCompatActivity() {
                     for (doc in it) {
                         val subject = doc.toObject(Subject::class.java)
                         subjectList.add(subject)
+                        EnrolledSubject.enrolledSubjects.add(subject.id)
                     }
 
-                    adapterSubject = SubjectAdapter(subjectList, bgImageList)
+                    adapterSubject = SubjectAdapter(subjectList, CardBgImage.bgImageList, this)
                     rv.adapter = adapterSubject
                 }
             }

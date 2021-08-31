@@ -35,6 +35,8 @@
     <string name="my_school">My School</string>
     <string name="you_have_not_enrolled_in_any_subjects">You have not enrolled in any subjects!</string>
     <string name="signing_in">Signing in…</string>
+    <string name="login__info_msg">On Clicking -> Sign in with Google, You will be enrolled as a student. To enroll as
+        enter as a teacher, please go to sign up screen via -> Create One</string>
     <string name="available_subjects">Available Subjects</string>
     <string name="assignment">Assignment</string>
     <string name="quiz_test">Quiz / Test</string>
@@ -55,4 +57,6 @@
     <string name="no_test_found">No Test Found !</string>
     <string name="due_31_08_2021_11_59">Due: 31/08/2021 11:59</string>
     <string name="_78_100">78/100</string>
+    <string name="enroll">Enroll</string>
+    <string name="no_available_subjects_found">No available subjects found !</string>
 </resources>

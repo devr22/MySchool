@@ -9,10 +9,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.dev.myschool.R
@@ -39,7 +36,7 @@ class SignupFragment : Fragment() {
     private lateinit var etEmail: EditText
     private lateinit var etPwd: EditText
     private lateinit var etConfirmPwd: EditText
-    private lateinit var progress: CircularProgressIndicator
+    private lateinit var progress: ProgressBar
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient

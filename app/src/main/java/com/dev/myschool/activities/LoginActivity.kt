@@ -10,13 +10,14 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.myschool.R
+import com.dev.myschool.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -31,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etPwd: EditText
     private lateinit var tvWarning: TextView
     private lateinit var tvMsg: TextView
-    private lateinit var progress: CircularProgressIndicator
+    private lateinit var progress: ProgressBar
     private lateinit var layout: ScrollView
 
     private lateinit var auth: FirebaseAuth
@@ -70,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnGoogleLogin.setOnClickListener {
-//            signIn()
+            signIn()
         }
 
         tvRegister.setOnClickListener {
@@ -103,7 +104,7 @@ class LoginActivity : AppCompatActivity() {
 
         auth.signInWithEmailAndPassword(email, pwd)
             .addOnSuccessListener {
-                progress.visibility = View.VISIBLE
+                progress.visibility = View.GONE
                 tvWarning.visibility = View.INVISIBLE
                 tvMsg.text = "Successful"
                 Log.d(TAG, "signInWithEmail:success")
@@ -157,7 +158,7 @@ class LoginActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     if (user != null) {
                         Log.d(TAG, "User: ${user.uid}")
-//                        storeUserInfo(user)
+                        storeUserInfo(user)
                     }
                 } else {
                     Log.d(TAG, "registerUser:failure", it.exception)
@@ -168,29 +169,22 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "" + it.message, Toast.LENGTH_SHORT).show()
             }
     }
-//
-//    private fun storeUserInfo(user: FirebaseUser) {
-//        val newUser = arguments?.let {
-//            user.email?.let { it1 ->
-//                User(
-//                    user.uid,
-//                    it1, it.getInt("UserType")
-//                )
-//            }
-//        }
-//
-//        if (newUser != null) {
-//            database.collection("Users").document(user.uid).set(newUser)
-//                .addOnSuccessListener {
-//                    Toast.makeText(activity, "Account created Successfully", Toast.LENGTH_SHORT)
-//                        .show()
-//                    startHomeActivity()
-//                }
-//                .addOnFailureListener {
-//                    Log.d(SignupFragment.TAG, "Error adding document" + it.message)
-//                }
-//        }
-//    }
+
+    private fun storeUserInfo(user: FirebaseUser) {
+        val newUser = user.email?.let { User(user.uid, it, 2, null) }
+
+        if (newUser != null) {
+            database.collection("Users").document(user.uid).set(newUser)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT)
+                        .show()
+                    startHomeActivity()
+                }
+                .addOnFailureListener {
+                    Log.d(TAG, "Error adding document" + it.message)
+                }
+        }
+    }
 
     /**
      * Password recovery

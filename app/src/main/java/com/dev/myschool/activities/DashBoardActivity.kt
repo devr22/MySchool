@@ -113,12 +113,11 @@ class DashBoardActivity : AppCompatActivity() {
     private fun populateUserDetail(user: User) {
         tvDisplayName.text = user.email[0].uppercaseChar().toString()
         tvEmail.text = user.email
-        if (user.userType == 1)
-            tvUserType.text = "Teacher"
-        else if (user.userType == 2)
-            tvUserType.text = "Student"
-        else
-            tvUserType.text = "User Type Not determined"
+        when (user.userType) {
+            1 -> tvUserType.text = "Teacher"
+            2 -> tvUserType.text = "Student"
+            else -> tvUserType.text = "User Type Not determined"
+        }
     }
 
     init {

@@ -12,8 +12,8 @@
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/subjectCard_layout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/padding_normal">
 
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/subject_remove"
+            android:layout_toStartOf="@+id/subject_videoCam"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/_8_maths"
             android:textColor="@color/black"
@@ -47,6 +47,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_remove"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/subject_videoCam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:layout_toStartOf="@+id/subject_remove"
+            android:src="@drawable/ic_videocam"
             tools:ignore="ContentDescription" />
 
     </RelativeLayout>
