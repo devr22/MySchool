@@ -32,4 +32,5 @@
     <dimen name="display_name_text_size">70sp</dimen>
 
     <dimen name="pop_up_cross_size">60dp</dimen>
+    <dimen name="splash_logo_size">125dp</dimen>
 </resources>
