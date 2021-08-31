@@ -1,6 +1,7 @@
 package com.dev.myschool.activities
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,7 @@ class TeacherActivity : AppCompatActivity() {
     private lateinit var tvUserType: TextView
     private lateinit var tvLogout: TextView
     private lateinit var tvCreateSubject: TextView
+    private lateinit var tvCalendar: TextView
     private lateinit var etSubject: EditText
     private lateinit var etName: EditText
     private lateinit var etLink: EditText
@@ -108,6 +110,11 @@ class TeacherActivity : AppCompatActivity() {
             finish()
         }
 
+        tvCalendar.setOnClickListener {
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun initViews() {
@@ -126,6 +133,7 @@ class TeacherActivity : AppCompatActivity() {
         etTiming = findViewById(R.id.teacher_timing_et)
         layoutCreateSubject = findViewById(R.id.teacher_createSubject_layout)
         btnCreate = findViewById(R.id.teacher_create_btn)
+        tvCalendar = findViewById(R.id.teacher_calendar_tv)
     }
 
     @SuppressLint("SetTextI18n")
@@ -166,6 +174,15 @@ class TeacherActivity : AppCompatActivity() {
         etLink.setText("")
         etSubject.setText("")
         etTiming.setText("")
+    }
+
+    init {
+        teacherActivity = this
+    }
+
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        lateinit var teacherActivity: Activity
     }
 
 }

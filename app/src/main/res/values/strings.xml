@@ -71,5 +71,13 @@
     <string name="un_enroll">Un Enroll</string>
     <string name="cancel">Cancel</string>
     <string name="learn_and_test_yourself">Learn and Test Yourself</string>
+    <string name="create_calendar_event_for_student">Create Calendar Event for Student.</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="meeting_link_if_online">Meeting Link (if online)</string>
+    <string name="create_event">Create Event</string>
+    <string name="calendar_note"><![CDATA[Note: Write -> Remote / Online <- in location field, if it is online.]]></string>
+    <string name="calendar_warning">All fields are mandatory!!</string>
 </resources>
 

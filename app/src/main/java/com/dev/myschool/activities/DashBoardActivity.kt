@@ -91,6 +91,14 @@ class DashBoardActivity : AppCompatActivity() {
             startActivity(loginIntent)
             finish()
         }
+
+        tvCalendar.setOnClickListener {
+            Toast.makeText(
+                this,
+                "Stay tuned, calendar for student will be available very soon...",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun initViews() {
@@ -121,12 +129,12 @@ class DashBoardActivity : AppCompatActivity() {
     }
 
     init {
-        dashboardActivit = this
+        dashboardActivity = this
     }
 
     companion object {
         @SuppressLint("StaticFieldLeak")
-        lateinit var dashboardActivit: Activity
+        lateinit var dashboardActivity: Activity
     }
 
 }

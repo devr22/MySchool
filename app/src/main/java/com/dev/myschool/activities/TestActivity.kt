@@ -9,9 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.myschool.R
-import com.dev.myschool.adapters.AssignmentAdapter
 import com.dev.myschool.adapters.TestAdapter
-import com.dev.myschool.models.Assignment
 import com.dev.myschool.models.Test
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
@@ -46,7 +44,7 @@ class TestActivity : AppCompatActivity() {
         getTests()
 
         ivClose.setOnClickListener {
-            DashBoardActivity.dashboardActivit.finish()
+            DashBoardActivity.dashboardActivity.finish()
             val intent = Intent(this, DashBoardActivity::class.java)
             startActivity(intent)
             finish()

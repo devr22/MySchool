@@ -108,7 +108,7 @@
                     android:layout_marginTop="@dimen/margin_10"
                     android:hint="@string/timing_if_any"
                     app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/ic_insert_link"
+                    app:startIconDrawable="@drawable/ic_access_time"
                     app:startIconTint="@color/color_primary_variant">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -135,6 +135,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/margin_10"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/teacher_calendar_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingHorizontal="@dimen/padding_small"
+                android:paddingVertical="@dimen/padding_normal"
+                android:text="@string/calendar"
+                android:textSize="@dimen/text_22"
+                app:drawableEndCompat="@drawable/ic_arrow_forward" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:background="@color/gray" />
 
             <TextView

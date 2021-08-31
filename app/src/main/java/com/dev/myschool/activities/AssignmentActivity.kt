@@ -47,7 +47,7 @@ class AssignmentActivity : AppCompatActivity() {
         getAssignments()
 
         ivClose.setOnClickListener {
-            DashBoardActivity.dashboardActivit.finish()
+            DashBoardActivity.dashboardActivity.finish()
             val intent = Intent(this, DashBoardActivity::class.java)
             startActivity(intent)
             finish()
