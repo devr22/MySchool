@@ -3,7 +3,12 @@ Platform for Online Education
 <br/>
 MySchool targets to fulfil the need of online platform for education in the current scenario.
 <br/>
+<a href="https://drive.google.com/file/d/1we6MxomZmjvX9zrREwxz4X6lGgtWaNXv/view?usp=sharing"> **Demo Video** </a>
+<br/>
 ![Screenshot_2021-08-31-14-49-56-186_com dev myschool](https://user-images.githubusercontent.com/44022260/131503374-32f08cd2-f833-484c-ba56-e539e6c310b3.jpg)
+![Screenshot_2021-08-31-14-50-04-706_com dev myschool](https://user-images.githubusercontent.com/44022260/131615216-88cb37a2-ee72-47fc-ad52-19685f35a10a.jpg)
+![Screenshot_2021-08-31-14-50-23-437_com dev myschool](https://user-images.githubusercontent.com/44022260/131615219-8ff52585-d3fc-4b98-8577-cb3db0718544.jpg)
+![Screenshot_2021-08-31-17-19-11-046_com dev myschool](https://user-images.githubusercontent.com/44022260/131615221-5e54dbae-6092-4cb9-88ec-274875ea447e.jpg)
 <br/>
 ## Features
 ### Login & Signup
